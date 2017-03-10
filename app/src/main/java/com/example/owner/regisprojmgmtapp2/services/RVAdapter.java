@@ -46,6 +46,11 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder> 
         this.products = products;
     }
 
+
+    public void updateProducts(List<Products> products){
+        this.products = products;
+    }
+
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
@@ -63,12 +68,13 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder> 
         personViewHolder.project.setText(products.get(i).project);
         personViewHolder.taskOne.setText(products.get(i).taskOne);
         personViewHolder.taskTwo.setText(products.get(i).taskTwo);
-
-
     }
+
+
 
     @Override
     public int getItemCount() {
+
         return products.size();
     }
 }

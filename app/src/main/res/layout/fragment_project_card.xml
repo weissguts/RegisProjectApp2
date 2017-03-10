@@ -8,16 +8,15 @@
     <android.support.v7.widget.CardView
         android:id="@+id/cv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
 
         >
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
             android:background="@drawable/customborder"
-            >
+            android:padding="16dp">
 
             <TextView
                 android:id="@+id/myProject"
@@ -42,8 +41,6 @@
                 android:layout_below="@+id/myTaskOne"
                 android:textSize="15sp"
                 tools:text="Placeholder Two" />
-
-
 
 
         </RelativeLayout>

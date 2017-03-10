@@ -11,6 +11,8 @@ import android.widget.EditText;
  * Created by Owner on 2/18/2017.
  */
 
+
+
 public class Products {
     public String project;
     public String taskOne;
@@ -22,7 +24,9 @@ public class Products {
         this.project = project;
         this.taskOne = taskOne;
         this.taskTwo = taskTwo;
+    }
 
+    public Products() {
 
     }
 

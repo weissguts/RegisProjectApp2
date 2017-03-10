@@ -23,7 +23,16 @@
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="0dp" />
 
+    <fragment
+        android:id="@+id/myAdjustmentFrag"
+        android:name="com.example.owner.regisprojmgmtapp2.ProjectAdjustmentFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        tools:layout="@layout/fragment_project_adjustment"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="464dp"
 
+        />
 
 
 </android.support.constraint.ConstraintLayout>
