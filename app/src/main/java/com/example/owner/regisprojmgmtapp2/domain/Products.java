@@ -19,7 +19,7 @@ public class Products {
     public String taskTwo;
 
 
-
+    //So my object contains 3 strings - on cardview - project, taskOne, taskTwo.
     public Products(String project, String taskOne, String taskTwo) {
         this.project = project;
         this.taskOne = taskOne;

@@ -2,37 +2,41 @@ package com.example.owner.regisprojmgmtapp2;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.provider.SyncStateContract;
+import android.support.constraint.solver.widgets.Snapshot;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
+import android.widget.Toast;
 
 
 import com.example.owner.regisprojmgmtapp2.domain.Products;
 import com.example.owner.regisprojmgmtapp2.services.RVAdapter;
 import com.google.firebase.database.*;
-import com.google.firebase.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.logging.Handler;
+
+import static android.R.id.button1;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView rv;
+
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference myRef = database.getReference("ProjectCards");
+    private DatabaseReference myRef = database.getInstance().getReference();
+
+
     private Context context = null;
     private List<Products> productsList = new ArrayList<Products>();
+    private Products products = new Products("TEst", "Testtt", "testt");
+    final RVAdapter adapter = new RVAdapter(productsList);
+
+
 
 
 
@@ -43,14 +47,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         context = this;
-
         rv = (RecyclerView) findViewById(R.id.rv);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
-
 
 
         //****************Add Button*****************//
@@ -58,9 +59,6 @@ public class MainActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 addProject(v);
-                myRef.child("notes").push().setValue(productsList);
-
-
             }
         });
 
@@ -72,20 +70,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        initializeData();
-        initializeAdapter();
-        //initFirebaseListener();
 
-        myRef.addValueEventListener(new ValueEventListener() {
+
+    }
+
+    public void addProject(View view) {
+
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Products products = dataSnapshot.getValue(Products.class);
-                String one = dataSnapshot.getValue().toString();
-                while (one.contains("project")) {
-                    System.out.println("Test");
-                }
-                products.setTaskTwo((String) products.getTaskTwo());
-
+                    productsList.add(products);
+                    myRef.setValue(productsList);
+                    rv.setAdapter(adapter);
 
             }
 
@@ -97,60 +93,47 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void initializeData() {
-        productsList.add(new Products("Project Placeholder", "1st Task"
-                , "2nd Task"));
-
-    }
-
-    private void initializeAdapter() {
-        RVAdapter adapter = new RVAdapter(productsList);
-        rv.setAdapter(adapter);
-    }
-
-    public void addProject(View view) {
-        RVAdapter rvAdapter = (RVAdapter) rv.getAdapter();
-        String Help = "PLEASE WORK";
-        productsList.add(new Products(Help, "Test One", "Test Two"));
-        rvAdapter.updateProducts(productsList);
-        rv.setAdapter(rvAdapter);
-    }
-
     public void deleteAllProjects(View view) {
-        RVAdapter rvAdapter = (RVAdapter) rv.getAdapter();
+
         productsList.removeAll(productsList);
-        rvAdapter.updateProducts(productsList);
-        rv.setAdapter(rvAdapter);
+        rv.setAdapter(adapter);
+
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                    productsList.clear();
+                    myRef.setValue(productsList);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
-//    private void initFirebaseListener() {
-//        myRef.child("notes").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                HashMap<String, Object> notesJSON = dataSnapshot.getValue(HashMap.class);
-//                ArrayList<Products> productsList = new ArrayList<Products>();
-//
-//                for (Map.Entry<String, Object> entry : notesJSON.entrySet()) {
-//                    Map notes = (Map) entry.getValue();
-//                    Products products = new Products();
-//
-//                    products.setProject((String) notes.get("project"));
-//                    products.setTaskOne((String) notes.get("taskOne"));
-//                    products.setTaskTwo((String) notes.get("taskTwo"));
-//
-//                    productsList.add(products);
-//                }
-//
-//                RVAdapter rvAdapter = (RVAdapter) rv.getAdapter();
-//                rv.setAdapter(rvAdapter);
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//    }
+    public void syncNow(View view) {
+
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                productsList.clear();
+
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    Products product = child.getValue(Products.class);
+                    productsList.add(product);
+                    rv.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        
+
+    }
 
 
 

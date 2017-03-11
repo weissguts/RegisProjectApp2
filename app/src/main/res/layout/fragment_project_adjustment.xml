@@ -16,13 +16,14 @@
         android:text="Delete All" />
 
     <Button
-        android:id="@+id/myEditButton"
+        android:id="@+id/mySyncButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:onClick="editProject"
-        android:text="Edit" />
+        android:text="Sync"
+        android:onClick="syncNow"
+        />
 
     <Button
         android:id="@+id/myAddButton"
