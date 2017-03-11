@@ -6,6 +6,7 @@ package com.example.owner.regisprojmgmtapp2.services;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,8 @@ import com.example.owner.regisprojmgmtapp2.*;
 import java.util.List;
 
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder> {
+
+    private static final String TAG = "VIVZ" ;
 
     public static class PersonViewHolder extends RecyclerView.ViewHolder {
 
@@ -51,6 +54,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder> 
         this.products = products;
     }
 
+
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
@@ -60,6 +64,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder> 
     public PersonViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_project_card, viewGroup, false);
         PersonViewHolder pvh = new PersonViewHolder(v);
+        Log.d(TAG, "onCreateViewHolder: ");
         return pvh;
     }
 
@@ -68,7 +73,10 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder> 
         personViewHolder.project.setText(products.get(i).project);
         personViewHolder.taskOne.setText(products.get(i).taskOne);
         personViewHolder.taskTwo.setText(products.get(i).taskTwo);
+        Log.d(TAG, "onBindViewHolder: " + i);
     }
+
+
 
 
 

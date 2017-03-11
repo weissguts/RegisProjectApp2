@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "569909876088",
+    "firebase_url": "https://regisprojectapp.firebaseio.com",
+    "project_id": "regisprojectapp",
+    "storage_bucket": "regisprojectapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:569909876088:android:ad6da12ac8370224",
+        "android_client_info": {
+          "package_name": "com.example.owner.regisprojmgmtapp2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "569909876088-7qmhcac6is7t4n2ci70v9tglrgbgm9qn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.owner.regisprojmgmtapp2",
+            "certificate_hash": "b98e518bb1b1e9d07b8c19fe8bd6a5d38a7b1bd7"
+          }
+        },
+        {
+          "client_id": "569909876088-hmrf4n27gl009rippcrk4oa51da7go3i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4BSEv49_ACBdGxsNkigrkOq2zK3fxwnc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "569909876088-hmrf4n27gl009rippcrk4oa51da7go3i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
