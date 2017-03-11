@@ -70,9 +70,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //****************Sync Button*****************//
+        Button syncButton = (Button) findViewById(R.id.mySyncButton);
+        syncButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                syncNow(v);
+            }
+        });
 
+        syncButton.performClick();
 
     }
+
+
 
     public void addProject(View view) {
 
