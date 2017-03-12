@@ -28,9 +28,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder> 
         TextView project;
         TextView taskOne;
         TextView taskTwo;
-        TextView taskThree;
-        TextView taskFour;
-        EditText personDate;
+
 
 
         PersonViewHolder(View itemView) {

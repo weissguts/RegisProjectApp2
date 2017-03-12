@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Context context = null;
     private List<Products> productsList = new ArrayList<Products>();
-    private Products products = new Products("TEst", "Testtt", "testt");
+    private Products products = new Products("Project PlaceHolder", "Task One", "Task Two ");
     final RVAdapter adapter = new RVAdapter(productsList);
 
 
@@ -89,9 +91,9 @@ public class MainActivity extends AppCompatActivity {
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                    productsList.add(products);
-                    myRef.setValue(productsList);
-                    rv.setAdapter(adapter);
+                productsList.add(products);
+                myRef.setValue(productsList);
+                rv.setAdapter(adapter);
 
             }
 
@@ -111,8 +113,8 @@ public class MainActivity extends AppCompatActivity {
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                    productsList.clear();
-                    myRef.setValue(productsList);
+                productsList.clear();
+                myRef.setValue(productsList);
             }
 
             @Override
@@ -131,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     Products product = child.getValue(Products.class);
+
                     productsList.add(product);
                     rv.setAdapter(adapter);
                 }
@@ -141,7 +144,38 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        
+
+
+    }
+
+
+    public void setText (View view) {
+
+        TextView myProject = (TextView) findViewById(R.id.myProject);
+        EditText myProjectEdit = (EditText) findViewById(R.id.myProjectEdit);
+        myProject.setText((myProjectEdit.getText().toString()));
+        myProject.setAlpha(1);
+        myProjectEdit.setVisibility(View.GONE);
+
+        TextView myTaskOne = (TextView) findViewById(R.id.myTaskOne);
+        EditText myTaskOneEdit = (EditText) findViewById(R.id.myTaskOneEdit);
+        myTaskOne.setText((myTaskOneEdit.getText().toString()));
+        myTaskOne.setAlpha(1);
+        myTaskOneEdit.setVisibility(View.GONE);
+
+        TextView myTaskTwo = (TextView) findViewById(R.id.myTaskTwo);
+        EditText myTaskTwoEdit = (EditText) findViewById(R.id.myTaskTwoEdit);
+        myTaskTwo.setText((myTaskTwoEdit.getText().toString()));
+        myTaskTwo.setAlpha(1);
+        myTaskTwoEdit.setVisibility(View.GONE);
+
+
+        Products products = new Products(myProject.getText().toString(),
+                myTaskOne.getText().toString(), myTaskTwo.getText().toString());
+
+
+        productsList.set(0,products);
+        myRef.setValue(productsList);
 
     }
 

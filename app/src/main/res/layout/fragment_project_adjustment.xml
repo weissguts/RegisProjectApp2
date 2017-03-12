@@ -8,28 +8,40 @@
 
     <Button
         android:id="@+id/myDeleteButton"
-        android:layout_width="wrap_content"
+        android:layout_width="55dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:onClick="deleteProject"
-        android:text="Delete All" />
+        android:text="Delete All"
+        android:textSize="8dp" />
 
     <Button
         android:id="@+id/mySyncButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Sync"
+        android:layout_toEndOf="@+id/myAddButton"
         android:onClick="syncNow"
-        />
+        android:text="Sync/Edit Cards"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/mySetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="setText"
+        android:text="set Text"
+        android:textSize="12sp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/mySyncButton" />
 
     <Button
         android:id="@+id/myAddButton"
-        android:layout_width="wrap_content"
+        android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:text="Add " />
+        android:text="Add "
+        android:textSize="12sp" />
 </RelativeLayout>

@@ -6,6 +6,7 @@ package com.example.owner.regisprojmgmtapp2.domain;
 
 import android.support.v7.widget.CardView;
 import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * Created by Owner on 2/18/2017.
