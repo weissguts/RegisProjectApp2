@@ -2,6 +2,7 @@ package com.example.owner.regisprojmgmtapp2.domain;
 
 /**
  * Created by Owner on 3/9/2017.
+ * Object class to hold items for project card.
  */
 
 import android.support.v7.widget.CardView;
@@ -35,6 +36,10 @@ public class Products {
         return project;
     }
 
+    /**
+     * Getters and Setters.
+     * @param project
+     */
     public void setProject(String project) {
         this.project = project;
     }

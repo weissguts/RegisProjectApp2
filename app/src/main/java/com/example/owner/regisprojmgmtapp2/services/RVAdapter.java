@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.owner.regisprojmgmtapp2.domain.Products;
@@ -28,8 +27,6 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder> 
         TextView project;
         TextView taskOne;
         TextView taskTwo;
-
-
 
         PersonViewHolder(View itemView) {
             super(itemView);
@@ -73,9 +70,6 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder> 
         personViewHolder.taskTwo.setText(products.get(i).taskTwo);
         Log.d(TAG, "onBindViewHolder: " + i);
     }
-
-
-
 
 
     @Override

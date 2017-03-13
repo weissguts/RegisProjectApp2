@@ -21,7 +21,7 @@
         android:layout_centerVertical="true"
         tools:layout="@layout/fragment_project_card"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteY="50dp" />
 
     <fragment
         android:id="@+id/myAdjustmentFrag"
@@ -30,7 +30,7 @@
         android:layout_height="50dp"
         tools:layout="@layout/fragment_project_adjustment"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="464dp"
+        tools:layout_editor_absoluteY="0dp"
 
         />
 
